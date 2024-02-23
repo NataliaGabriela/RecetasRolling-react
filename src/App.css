@@ -11,6 +11,23 @@
 .mainSection {
   flex-grow: 1;
 }
-.bgPrincipal{
+.bgPrincipalBlog{
   background: #e53938;
+}
+.textPrincipalBlog{
+  color: #e53938;
+}
+.banner {
+  object-fit: cover;
+  height: 395px;
+  width: 100%;
+}
+.btnError{
+  background: #e53938;
+  width: 200px;
+  border: #e53938 .1em solid;
+}
+.btnError:hover{
+  background: #ed96a4;
+  border: #ed96a4 .1em solid;
 }
