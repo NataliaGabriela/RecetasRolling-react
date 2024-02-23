@@ -9,8 +9,9 @@ function App() {
   return (
     <>
       <NavBar></NavBar>
-      {/*<Inicio></Inicio>*/}
-      <Error></Error>
+      {/* <Error></Error>*/}
+     
+      <Inicio></Inicio>
       <Footer></Footer>
     </>
   );

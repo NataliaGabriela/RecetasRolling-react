@@ -31,3 +31,19 @@
   background: #ed96a4;
   border: #ed96a4 .1em solid;
 }
+.card {
+  width: var(--max);
+}
+
+.card-img-top-nueva {
+  width: 100%;
+  object-fit: cover;
+}
+.btnCardRecetas{
+  background: #e53938;
+  border: #e53938 .1em solid;
+}
+.btnCardRecetas:hover{
+  background: #ed96a4;
+  border: #ed96a4 .1em solid;
+}
