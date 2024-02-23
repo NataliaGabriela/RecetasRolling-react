@@ -9,6 +9,10 @@ const Inicio = () => {
         <h1 className="display-4 textPrincipalBlog">Recetas</h1>
         <Row>
           <CardReceta></CardReceta>
+          <CardReceta></CardReceta>
+          <CardReceta></CardReceta>
+          <CardReceta></CardReceta>
+          <CardReceta></CardReceta>
         </Row>
       </Container>
     </section>
