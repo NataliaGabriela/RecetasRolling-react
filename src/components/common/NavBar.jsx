@@ -7,12 +7,12 @@ const NavBar = () => {
     return (
       <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Recetas Rolling</Navbar.Brand>
+        <Navbar.Brand  as={Link} to='/'>Recetas Rolling</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
-            <Nav.Link href="#link">Administrador</Nav.Link>
+            <NavLink end className='nav-link' to='/'>Inicio</NavLink>
+            <NavLink end className='nav-link' to='/administrador'>Administrador</NavLink>
             
           </Nav>
         </Navbar.Collapse>
