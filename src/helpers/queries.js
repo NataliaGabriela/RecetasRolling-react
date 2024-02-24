@@ -11,3 +11,18 @@ export const leerRecetasAPI = async()=>{
         console.log(error)
     }
 }
+export const crearProductoAPI = async(productoNuevo)=>{
+    try {
+        const respuesta = await fetch(URI_PRODUCTOS, {
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(productoNuevo)
+        })
+        console.log(respuesta);
+        return respuesta
+    } catch (error) {
+        console.log(error)
+    }
+}
