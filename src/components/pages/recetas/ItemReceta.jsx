@@ -15,11 +15,9 @@ const ItemProducto = () => {
       <td className="text-center">
         <Button  className="me-lg-2 btnEditar"
         >
-            editar
-          <i className="bi bi-pencil-square"></i>
+           <i class="bi bi-pencil-square"></i>
         </Button>
         <Button className="btnBorrar" >
-            borrar
         <i className="bi bi-trash"></i>
         </Button>
       </td>

@@ -8,7 +8,6 @@ const Administrador = () => {
         <h1 className="display-4 colorFont {
 ">Recetas Cargadas</h1>
         <Button variant="primary">
-          agregar
           <i className="bi bi-file-earmark-plus"></i>
         </Button>
       </div>

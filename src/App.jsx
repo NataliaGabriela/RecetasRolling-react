@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import NavBar from "./components/common/NavBar";
 import Footer from "./components/common/Footer";
 import Inicio from "./components/pages/Inicio";
