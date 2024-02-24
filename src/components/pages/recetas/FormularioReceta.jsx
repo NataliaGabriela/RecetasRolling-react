@@ -26,7 +26,7 @@ const FormularioReceta = () => {
       <hr />
       <Form className="my-4"  onSubmit={handleSubmit(recetaValidada)}>
         <Form.Group className="mb-3" controlId="formNombreReceta">
-          <Form.Label>Nombre del Plato*</Form.Label>
+          <Form.Label>Nombre de la Receta*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: Pizza"
@@ -45,7 +45,7 @@ const FormularioReceta = () => {
             }
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.nombreReceta?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
@@ -64,7 +64,7 @@ const FormularioReceta = () => {
             }
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.imagen?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCategoria">
@@ -81,7 +81,7 @@ const FormularioReceta = () => {
             <option value="Salado">Salado</option>
           </Form.Select>
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.categoria?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="forNumComensales">
@@ -89,19 +89,41 @@ const FormularioReceta = () => {
           <Form.Control
             type="text"
             placeholder="Ej: 4"
+            {...register("numero_comensales", {
+              required: "El número de comensales es obligatorio",
+              min: {
+                value: 1,
+                message: "El número mínimo es 1",
+              },
+              max: {
+                value: 100,
+                message: "El número máximo es 100",
+              },
+            })}
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.numero_comensales?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="forTiempoPreparacion">
-          <Form.Label>Tiempo de Preparación*</Form.Label>
+          <Form.Label>Tiempo de Preparación en minutos*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Ej: 4"
+            {...register("tiempo_preparacion", {
+              required: "Debe indicar el tiempo de preparación",
+              min: {
+                value: 1,
+                message: "El número mínimo es 1 minuto",
+              },
+              max: {
+                value: 300,
+                message: "El número máximo es 300",
+              },
+            })}
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.tiempo_preparacion?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formIngredientes">
@@ -118,7 +140,7 @@ const FormularioReceta = () => {
             "
             as="textarea"
             {
-              ...register("descripcion_breve",{
+              ...register("ingredientes",{
                 required: "Debe ingresar los ingredientes de la receta",
                 minLength:{
                   value: 5,
@@ -132,7 +154,7 @@ const FormularioReceta = () => {
             }
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.ingredientes?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formProcedimiento">
@@ -161,11 +183,11 @@ const FormularioReceta = () => {
             }
           />
           <Form.Text className="text-danger">
-          {errors.nombreProducto?.message}
+          {errors.procedimiento?.message}
           </Form.Text>
         </Form.Group>
         
-        <Button type="submit" className="btnError">
+        <Button type="submit" className="btnGuardar">
           Guardar
         </Button>
       </Form>

@@ -74,3 +74,13 @@
   border:   #e53938 .1em solid;
   filter: opacity(80%);
 }
+.btnGuardar{
+  background: #e53938;
+  width: 200px;
+  border: #e53938 .1em solid;
+}
+.btnGuardar:hover{
+  background: #e53938;
+  border:   #e53938 .1em solid;
+  filter: opacity(80%);
+}
