@@ -21,9 +21,9 @@ const Inicio = () => {
       <Container>
         <h1 className="display-4 colorFont ">Recetas</h1>
         <Row>
-        {recetas.map((receta) => (
-            <CardReceta key={receta.id} receta={receta}></CardReceta>
-          ))}
+        {
+            recetas.map((receta)=><CardReceta key={receta.id} receta={receta}></CardReceta>)
+          }
         </Row>
       </Container>
     </section>
