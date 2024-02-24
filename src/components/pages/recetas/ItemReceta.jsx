@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { borrarRecetaAPI, leerRecetaAPI } from "../../../helpers/queries";
-const ItemReceta = ({receta}) => {
+import { borrarRecetaAPI, leerRecetasAPI } from "../../../helpers/queries";
+const ItemReceta = ({receta, setRecetas}) => {
   const borrarReceta = ()=>{
     Swal.fire({
       title: "¿Estas seguro de eliminar esta receta?",
@@ -18,8 +18,8 @@ const ItemReceta = ({receta}) => {
         const respuesta = await borrarRecetaAPI(receta.id)
         if(respuesta.status === 200){
           //falta actualizar la tabla
-         const recetasActualizadas = await leerRecetaAPI();
-         setProductos(recetasActualizadas);
+         const recetasActualizadas = await leerRecetasAPI();
+         setRecetas(recetasActualizadas);
 
           Swal.fire({
             title: "Receta elminada",
