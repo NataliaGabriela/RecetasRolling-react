@@ -1,28 +1,89 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearRecetaAPI } from "../../../helpers/queries";
-const FormularioReceta = () => {
+import { crearRecetaAPI, editarRecetasAPI, obtenerRecetaAPI } from "../../../helpers/queries";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+const FormularioReceta = ({editar, titulo}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    setValue
   } = useForm();
+  const { id } = useParams();
+  const navegacion = useNavigate();
+  useEffect(() => {
+  if (editar) {
+    cargarDatosFormulario();
+  }
+}, []);
 
+const cargarDatosFormulario = async () => {
+  const respuesta = await obtenerRecetaAPI(id);
+  if (respuesta.status === 200) {
+    const recetaBuscada = await respuesta.json();
+    setValue("nombreReceta", recetaBuscada.nombreReceta);
+    setValue("imagen", recetaBuscada.imagen);
+    setValue("categoria", recetaBuscada.categoria);
+    setValue("numero_comensales", recetaBuscada.numero_comensales);
+    setValue("tiempo_preparacion", recetaBuscada.tiempo_preparacion);
+    setValue("ingredientes", recetaBuscada.ingredientes);
+    setValue("procedimiento", recetaBuscada.procedimiento);
+  } else {
+    Swal.fire({
+      title: "Ocurrio un error",
+      text: "Intente realizar esta operacion en unos minutos",
+      icon: "error",
+    });
+  }
+};
   const recetaValidada = async(receta) => {
-    console.log(receta);
-    const respuesta = await crearRecetaAPI(receta);
-    if(respuesta.status === 201){
-      console.log('receta creada')
-      reset();
-    }else{
-      console.log('ocurrio un error')
+    try{
+      if (editar) {
+        const respuesta = await editarRecetasAPI(id, receta);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Receta editada",
+          text: `La receta: ${receta.nombreReceta}, fue editada correctamente`,
+          icon: "success",
+        });
+        navegacion("/administrador");
+      }else{
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: "Intente modificar esta receta en unos minutos",
+          icon: "error",
+        });
+      }
+      }else{
+        const respuesta = await crearRecetaAPI(receta);
+        if(respuesta.status === 201){
+          Swal.fire({
+            title: "Receta creada",
+            text: `La receta: ${receta.nombreReceta} fue creada correctamente`,
+            icon: "success",
+          });
+          reset();
+        }else{
+          Swal.fire({
+            title: "Ocurrio un error",
+            text: "Intente crear esta receta en unos minutos",
+            icon: "error",
+          });
+        }
+      }
+    }catch(error){
+      console.log(error)
     }
+    
+  
   };
 
   return (
     <section className="container mainSection">
-      <h1 className="display-4 mt-5 colorFont">Nueva Receta</h1>
+      <h1 className="display-4 mt-5 colorFont">{titulo}</h1>
       <hr />
       <Form className="my-4"  onSubmit={handleSubmit(recetaValidada)}>
         <Form.Group className="mb-3" controlId="formNombreReceta">
