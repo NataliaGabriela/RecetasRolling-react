@@ -1,6 +1,9 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearRecetaAPI, editarRecetasAPI } from "../../../helpers/queries";
+import { crearRecetaAPI, editarRecetasAPI, obtenerRecetaAPI } from "../../../helpers/queries";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
 const FormularioReceta = ({editar, titulo}) => {
   const {
     register,
@@ -22,11 +25,12 @@ const cargarDatosFormulario = async () => {
   if (respuesta.status === 200) {
     const recetaBuscada = await respuesta.json();
     setValue("nombreReceta", recetaBuscada.nombreReceta);
-    setValue("tiempo_preparacion", recetaBuscada.tiempo_preparacion);
+    setValue("imagen", recetaBuscada.imagen);
     setValue("categoria", recetaBuscada.categoria);
+    setValue("numero_comensales", recetaBuscada.numero_comensales);
+    setValue("tiempo_preparacion", recetaBuscada.tiempo_preparacion);
     setValue("ingredientes", recetaBuscada.ingredientes);
     setValue("procedimiento", recetaBuscada.procedimiento);
-    setValue("imagen", recetaBuscada.imagen);
   } else {
     Swal.fire({
       title: "Ocurrio un error",
@@ -42,10 +46,9 @@ const cargarDatosFormulario = async () => {
       if (respuesta.status === 200) {
         Swal.fire({
           title: "Receta editada",
-          text: `La receta: ${receta.nombreReceta} fue editada correctamente`,
+          text: `La receta: ${receta.nombreReceta}, fue editada correctamente`,
           icon: "success",
         });
-        //redireccionar
         navegacion("/administrador");
       }else{
         Swal.fire({
@@ -80,7 +83,7 @@ const cargarDatosFormulario = async () => {
 
   return (
     <section className="container mainSection">
-      <h1 className="display-4 mt-5 colorFont">Nueva Receta</h1>
+      <h1 className="display-4 mt-5 colorFont">{titulo}</h1>
       <hr />
       <Form className="my-4"  onSubmit={handleSubmit(recetaValidada)}>
         <Form.Group className="mb-3" controlId="formNombreReceta">

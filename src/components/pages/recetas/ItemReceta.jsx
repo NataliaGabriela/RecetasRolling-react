@@ -51,7 +51,7 @@ const ItemReceta = ({receta, setRecetas}) => {
       </td>
       <td>{receta.categoria}</td>
       <td className="text-center">
-        <Link  className="me-lg-2 btnEditar" to={`/administrador/editar/${producto.id}`}
+        <Link  className="me-lg-2 btn btnEditar" to={`/administrador/editar/${receta.id}`}
         >
            <i className="bi bi-pencil-square"></i>
         </Link>
