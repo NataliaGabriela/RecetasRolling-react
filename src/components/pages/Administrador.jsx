@@ -13,7 +13,7 @@ useEffect(()=>{
 const traerRecetas = async()=>{
   try {
      const listaRecetasAPI = await leerRecetasAPI();
-     setRecetas(listaProductosAPI);
+     setRecetas(listaRecetasAPI);
   } catch (error) {
     console.log(error)
   }
