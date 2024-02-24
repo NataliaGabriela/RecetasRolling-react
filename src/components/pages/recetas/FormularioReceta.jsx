@@ -187,7 +187,7 @@ const FormularioReceta = () => {
           </Form.Text>
         </Form.Group>
         
-        <Button type="submit" className="btnError">
+        <Button type="submit" className="btnGuardar">
           Guardar
         </Button>
       </Form>
