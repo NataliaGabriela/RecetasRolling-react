@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-
+import { crearRecetaAPI } from "../../../helpers/queries";
 const FormularioReceta = () => {
   const {
     register,
@@ -24,7 +24,7 @@ const FormularioReceta = () => {
     <section className="container mainSection">
       <h1 className="display-4 mt-5 colorFont">Nueva Receta</h1>
       <hr />
-      <Form className="my-4"  onSubmit={handleSubmit(productoValidado)}>
+      <Form className="my-4"  onSubmit={handleSubmit(recetaValidada)}>
         <Form.Group className="mb-3" controlId="formNombreReceta">
           <Form.Label>Nombre del Plato*</Form.Label>
           <Form.Control
@@ -45,7 +45,7 @@ const FormularioReceta = () => {
             }
           />
           <Form.Text className="text-danger">
-            prueba de error
+          {errors.nombreProducto?.message}
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formImagen">
@@ -57,8 +57,8 @@ const FormularioReceta = () => {
               ...register("imagen",{
                 required: "La imagen es obligatoria",
                 pattern:{
-                  value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/,
-                  message: "Debe ingresar una URL valida (jpg|gif|png)"
+                  value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpeg)/,
+                  message: "Debe ingresar una URL valida (jpg|gif|png|jpeg)"
                 }
               })
             }
@@ -125,8 +125,8 @@ const FormularioReceta = () => {
                   message: "Debe ingresar como minimo 5 caracteres para los ingredientes"
                 },
                 maxLength:{
-                  value: 100,
-                  message: "Debe ingresar como máximo 100 caracteres para los ingredientes"
+                  value: 1000,
+                  message: "Debe ingresar como máximo 1000 caracteres para los ingredientes"
                 }
               })
             }

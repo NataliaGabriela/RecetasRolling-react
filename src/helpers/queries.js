@@ -11,7 +11,7 @@ export const leerRecetasAPI = async()=>{
         console.log(error)
     }
 }
-export const crearRecetasAPI = async(recetaNueva)=>{
+export const crearRecetaAPI = async(recetaNueva)=>{
     try {
         const respuesta = await fetch(URI_RECETAS, {
             method: "POST",
