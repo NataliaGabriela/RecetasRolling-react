@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-const ItemProducto = ({receta}) => {
+const ItemReceta = ({receta}) => {
   return (
     <tr>
       <td className="text-center">{receta.id}</td>
@@ -25,4 +25,4 @@ const ItemProducto = ({receta}) => {
   );
 };
 
-export default ItemProducto;
+export default ItemReceta;
