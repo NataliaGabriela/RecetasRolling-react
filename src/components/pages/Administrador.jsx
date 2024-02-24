@@ -17,7 +17,7 @@ const Administrador = () => {
         <thead>
           <tr className="text-center">
             <th>Cod</th>
-            <th>Receta</th>
+            <th>Nombre</th>
             <th>URL de Imagen</th>
             <th>Categoria</th>
             <th>Opciones</th>
