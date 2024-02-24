@@ -5,13 +5,17 @@ import Footer from "./components/common/Footer";
 import Inicio from "./components/pages/Inicio";
 import Error from "./components/pages/Error";
 import "./App.css";
+import Administrador from "./components/pages/Administrador";
 function App() {
   return (
     <>
       <NavBar></NavBar>
-      {/* <Error></Error>*/}
-     
-      <Inicio></Inicio>
+      {/* <Error></Error>
+        <Inicio></Inicio>
+      */}
+   <Administrador></Administrador>
+      
+      
       <Footer></Footer>
     </>
   );
