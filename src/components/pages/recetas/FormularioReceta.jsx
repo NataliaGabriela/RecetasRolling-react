@@ -1,23 +1,81 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { crearRecetaAPI } from "../../../helpers/queries";
-const FormularioReceta = () => {
+import { crearRecetaAPI, editarRecetasAPI } from "../../../helpers/queries";
+const FormularioReceta = ({editar, titulo}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    setValue
   } = useForm();
+  const { id } = useParams();
+  const navegacion = useNavigate();
+  useEffect(() => {
+  if (editar) {
+    cargarDatosFormulario();
+  }
+}, []);
 
+const cargarDatosFormulario = async () => {
+  const respuesta = await obtenerRecetaAPI(id);
+  if (respuesta.status === 200) {
+    const recetaBuscada = await respuesta.json();
+    setValue("nombreReceta", recetaBuscada.nombreReceta);
+    setValue("tiempo_preparacion", recetaBuscada.tiempo_preparacion);
+    setValue("categoria", recetaBuscada.categoria);
+    setValue("ingredientes", recetaBuscada.ingredientes);
+    setValue("procedimiento", recetaBuscada.procedimiento);
+    setValue("imagen", recetaBuscada.imagen);
+  } else {
+    Swal.fire({
+      title: "Ocurrio un error",
+      text: "Intente realizar esta operacion en unos minutos",
+      icon: "error",
+    });
+  }
+};
   const recetaValidada = async(receta) => {
-    console.log(receta);
-    const respuesta = await crearRecetaAPI(receta);
-    if(respuesta.status === 201){
-      console.log('receta creada')
-      reset();
-    }else{
-      console.log('ocurrio un error')
+    try{
+      if (editar) {
+        const respuesta = await editarRecetasAPI(id, receta);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Receta editada",
+          text: `La receta: ${receta.nombreReceta} fue editada correctamente`,
+          icon: "success",
+        });
+        //redireccionar
+        navegacion("/administrador");
+      }else{
+        Swal.fire({
+          title: "Ocurrio un error",
+          text: "Intente modificar esta receta en unos minutos",
+          icon: "error",
+        });
+      }
+      }else{
+        const respuesta = await crearRecetaAPI(receta);
+        if(respuesta.status === 201){
+          Swal.fire({
+            title: "Receta creada",
+            text: `La receta: ${receta.nombreReceta} fue creada correctamente`,
+            icon: "success",
+          });
+          reset();
+        }else{
+          Swal.fire({
+            title: "Ocurrio un error",
+            text: "Intente crear esta receta en unos minutos",
+            icon: "error",
+          });
+        }
+      }
+    }catch(error){
+      console.log(error)
     }
+    
+  
   };
 
   return (
