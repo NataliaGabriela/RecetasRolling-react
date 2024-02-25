@@ -31,11 +31,11 @@ const DetalleReceta = () => {
     <Container className="mainSection my-3">
       <Row>
         <Col md={6} className="contenedorDetalleReceta text-center ">
-          <h1 className="display-4 fw-semibold mt-5">{receta.nombreReceta}</h1>
-          <p className="tiempoPreparacionDetalle my-5 fs-4">
-            {receta.tiempo_preparacion} min
+          <h1 className="display-4 fw-semibold my-5">{receta.nombreReceta}</h1>
+          <p className="my-5 fs-5">
+            {receta.tiempo_preparacion} min <i className="bi bi-alarm"></i>
           </p>
-          <p className="fs-4"><i className="bi bi-people-fill"></i> {receta.numero_comensales} comensales</p>
+          <p className="fs-5"><i className="bi bi-people-fill"></i> {receta.numero_comensales} comensales</p>
         </Col>
         <Col md={6} className="p-0">
           <Image src={receta.imagen}></Image>
