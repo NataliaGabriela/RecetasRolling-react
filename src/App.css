@@ -46,6 +46,7 @@
 .btnCardRecetas:hover{
   background: #e53938;
   border:  #e53938 .1em solid;
+  color: #ebd6ca;
 }
 .bodyCardReceta{
   background: #ebd6ca;
@@ -83,4 +84,13 @@
   background: #e53938;
   border:   #e53938 .1em solid;
   filter: opacity(80%);
+}
+.contenedorDetalleReceta{
+  background: #e53938;
+  color: #ebd6ca;
+}
+.tiempoPreparacionDetalle{
+  border:   #ebd6ca .2em solid;
+  width: 100px;
+  margin-left: 40%;
 }
