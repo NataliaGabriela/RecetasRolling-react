@@ -32,22 +32,20 @@ const DetalleReceta = () => {
       <Row>
         <Col md={6} className="contenedorDetalleReceta text-center ">
           <h1 className="display-4 fw-semibold mt-5">{receta.nombreReceta}</h1>
-          <p className="tiempoPreparacionDetalle my-5">
+          <p className="tiempoPreparacionDetalle my-5 fs-4">
             {receta.tiempo_preparacion} min
           </p>
-          <p><i className="bi bi-people-fill"></i> {receta.numero_comensales} comensales</p>
+          <p className="fs-4"><i className="bi bi-people-fill"></i> {receta.numero_comensales} comensales</p>
         </Col>
         <Col md={6} className="p-0">
           <Image src={receta.imagen}></Image>
         </Col>
         <Col md={6}>
           <h5 className="mt-4">Ingredientes:</h5>
-
           <p>{receta.ingredientes}</p>
         </Col>
         <Col md={6}>
           <h5 className="mt-4">Procedimiento:</h5>
-
           <p>{receta.procedimiento}</p>
         </Col>
       </Row>
