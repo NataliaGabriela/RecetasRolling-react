@@ -8,8 +8,8 @@ Crea una aplicación web, que permita mostrar un blog de recetas de cocina en un
 Demo Deply del proyecto https://recetasrolling-react.netlify.app/
 
 
-Librerias 📚 
-Bootstrap v5.3.2
-SweetAlert2
+Librerias 📚   
+ Bootstrap v5.3.2  
+ SweetAlert2
 
 Autor ✒️ Natalia Lopez
