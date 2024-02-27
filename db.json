@@ -1,14 +1,6 @@
 {
   "recetas": [
     {
-      "id": "5746",
-      "nombreReceta": "ñoquis",
-      "imagen": "https://images.pexels.com/photos/6659666/pexels-photo-6659666.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "categoria": "Salado",
-      "descripcion_breve": "1 kilo papa (blanca o roja con cáscara)\n500 gr harina 0000 (aproximadamente)\n2 cda polvo de hornear (opcional)\n1 huevo\nsal, pimienta y nuez moscada",
-      "procedimiento": "Hervir la papa con la cáscara hasta que estén tiernas. Elegir papas no muy grandes y de igual tamaño. Retirar, pelar y dejar enfriar."
-    },
-    {
       "nombreReceta": "milanesas",
       "imagen": "https://images.pexels.com/photos/18275671/pexels-photo-18275671/free-photo-of-pan-comida-brindis-madera.jpeg?auto=compress&cs=tinysrgb&w=600",
       "categoria": "Salado",
