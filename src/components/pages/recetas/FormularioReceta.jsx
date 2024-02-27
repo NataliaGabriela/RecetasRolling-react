@@ -208,8 +208,8 @@ const cargarDatosFormulario = async () => {
                   message: "Debe ingresar como minimo 5 caracteres para los ingredientes"
                 },
                 maxLength:{
-                  value: 1000,
-                  message: "Debe ingresar como máximo 1000 caracteres para los ingredientes"
+                  value: 2000,
+                  message: "Debe ingresar como máximo 2000 caracteres para los ingredientes"
                 }
               })
             }
