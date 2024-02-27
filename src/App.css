@@ -18,10 +18,22 @@
 .colorFont{
   color: #e53938;
 }
+.portadaRecetas{
+  position: relative;
+  top: 0px;
+}
 .banner {
   object-fit: cover;
   height: 395px;
   width: 100%;
+}
+.tiuloPrincipal{
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 .btnError{
   background: #e53938;
@@ -46,6 +58,7 @@
 .btnCardRecetas:hover{
   background: #e53938;
   border:  #e53938 .1em solid;
+  color: #ebd6ca;
 }
 .bodyCardReceta{
   background: #ebd6ca;
@@ -83,4 +96,8 @@
   background: #e53938;
   border:   #e53938 .1em solid;
   filter: opacity(80%);
+}
+.contenedorDetalleReceta{
+  background: #e53938;
+  color: #ebd6ca;
 }

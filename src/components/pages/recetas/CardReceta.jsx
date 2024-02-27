@@ -1,4 +1,6 @@
-import { Button, Card, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 const CardReceta = ({receta}) => {
   return (
     <Col md={3} className="mb-3">
@@ -6,7 +8,7 @@ const CardReceta = ({receta}) => {
       <Card.Img variant="top" src={receta.imagen} className="card-img-top-nueva" />
       <Card.Body className="text-center bodyCardReceta">
         <Card.Title>{receta.nombreReceta}</Card.Title>
-        <Button className="btnCardRecetas w-100 fw-semibold">Ver Receta</Button>
+        <Link className=" btn btnCardRecetas w-100 fw-semibold" to={'/detalleReceta/'+ receta.id} >Ver Receta</Link>
       </Card.Body>
     </Card>
     </Col>

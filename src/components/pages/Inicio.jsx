@@ -2,6 +2,7 @@ import { Container, Row, Image } from "react-bootstrap";
 import CardReceta from "./recetas/CardReceta";
 import { useEffect, useState } from "react";
 import { leerRecetasAPI } from "../../helpers/queries";
+import "../../App.css";
 const Inicio = () => {
   const [recetas, setRecetas] = useState([]);
   useEffect(() => {
@@ -17,13 +18,18 @@ const Inicio = () => {
   };
   return (
     <section className="mainSection">
-      <Image src="/assets/banner.png" className="banner" />
+      <div className="portadaRecetas mb-5 text-center">
+        <Image src="/assets/banner.png" className="banner" />
+        <div className="tiuloPrincipal">
+          <h1 className="display-1 colorFont ">Recetas Rolling</h1>
+        </div>
+      </div>
+
       <Container>
-        <h1 className="display-4 colorFont ">Recetas</h1>
         <Row>
-        {
-            recetas.map((receta)=><CardReceta key={receta.id} receta={receta}></CardReceta>)
-          }
+          {recetas.map((receta) => (
+            <CardReceta key={receta.id} receta={receta}></CardReceta>
+          ))}
         </Row>
       </Container>
     </section>
