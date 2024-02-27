@@ -19,7 +19,7 @@ const Inicio = () => {
   return (
     <section className="mainSection">
       <div className="portadaRecetas mb-5 text-center">
-        <Image src="/assets/banner.png" className="banner" />
+        <Image src="../../src/assets/banner.png" className="banner" />
         <div className="tiuloPrincipal">
           <h1 className="display-1 colorFont ">Recetas Rolling</h1>
         </div>
