@@ -3,6 +3,7 @@ import CardReceta from "./recetas/CardReceta";
 import { useEffect, useState } from "react";
 import { leerRecetasAPI } from "../../helpers/queries";
 import "../../App.css";
+import banner from '../../assets/banner.png';
 const Inicio = () => {
   const [recetas, setRecetas] = useState([]);
   useEffect(() => {
@@ -19,7 +20,7 @@ const Inicio = () => {
   return (
     <section className="mainSection">
       <div className="portadaRecetas mb-5 text-center">
-        <Image src="../../src/assets/banner.png" className="banner" />
+        <Image src={banner} className="banner" />
         <div className="tiuloPrincipal">
           <h1 className="display-1 colorFont ">Recetas Rolling</h1>
         </div>
