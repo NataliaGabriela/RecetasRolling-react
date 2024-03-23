@@ -6,16 +6,18 @@ import Inicio from "./components/pages/Inicio";
 import Error from "./components/pages/Error";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Administrador from "./components/pages/Administrador";
-import FormularioReceta from "./components/pages/recetas/FormularioReceta";
 import DetalleReceta from "./components/pages/recetas/DetalleReceta";
+import { useState } from "react";
+import RutasProtegidas from "./components/routes/RutasProtegidas";
+import RutasAdmin from "./components/routes/RutasAdmin";
+import Login from "./components/pages/Login"
 function App() {
   const usuario =
     JSON.parse(sessionStorage.getItem("inicioRollingCoffe")) || "";
-  const [usuarioLogueado, setUsuairoLogueado] = useState(usuario);
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario);
   return (
     <BrowserRouter>
-      <NavBar></NavBar>
+      <NavBar usuarioLogueado = {usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></NavBar>
       <Routes>
         <Route exact path="/" element={<Inicio></Inicio>}></Route>
         <Route
@@ -23,6 +25,7 @@ function App() {
           path="/detalleReceta/:id"
           element={<DetalleReceta></DetalleReceta>}
         ></Route>
+        <Route exact path="/login" element={<Login setUsuarioLogueado = {setUsuarioLogueado}></Login>}></Route>
         <Route
           exact
           path="/administrador/*"
