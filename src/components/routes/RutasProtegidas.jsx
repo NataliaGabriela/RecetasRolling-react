@@ -1,40 +1,11 @@
-import { Route, Routes } from "react-router-dom";
-import Administrador from "../pages/Administrador";
-import FormularioProducto from "../pages/FormularioProducto";
+import { Navigate } from "react-router-dom";
 
-
-const RutasAdmin = () => {
-  return (
-    <>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Administrador></Administrador>}
-        ></Route>
-        <Route
-          exact
-          path="/crear"
-          element={
-            <FormularioProducto
-              editar={false}
-              titulo="Nuevo producto"
-            ></FormularioProducto>
-          }
-        ></Route>
-        <Route
-          exact
-          path="/editar/:id"
-          element={
-            <FormularioProducto
-              editar={true}
-              titulo="Editar producto"
-            ></FormularioProducto>
-          }
-        ></Route>
-      </Routes>
-    </>
-  );
+const RutasProtegidas = ({children}) => {
+    const admin = JSON.parse(sessionStorage.getItem('inicioRollingCoffe')) || null;
+    if (!admin) {
+        return<Navigate to="/login"></Navigate>
+    }else{
+        return children; //listas de rutas
+    }
 };
-
-export default RutasAdmin;
+export default RutasProtegidas;
